@@ -1,4 +1,20 @@
 Alright so basic setup is here
 https://aiyprojects.withgoogle.com/voice-v1/
 
-Ok, so follow the direction in the booklet, AIY projects
+Remember to run (mostly) everything with python 3! It was a basic mistake but it cost me a day of work.
+
+Ok, so follow the direction in the booklet (Essentials_AIY_Projects_Voice_v1), they are pretty much correct, but a few edits are needed.
+
+So cloudspeach_demo.py has been moved, from /src/ to /src/checkpoints
+
+Also, you need to make some edits, cause stuff has broken due to updates.
+
+In cloudspeech_demo.py, you need to edit these lines:
+
+from google.cloud import speech_v1 as speech
+...
+END_OF_SINGLE_UTTERANCE = speech.types.StreamingRecognizeResponse.SpeechEventType.END_OF_SINGLE_UTTERANCE
+...
+encoding=speech.types.RecognitionConfig.AudioEncoding.LINEAR16,
+
+If you want to use a .desktop file in terminal, simple open it with nano and see where it leads.
