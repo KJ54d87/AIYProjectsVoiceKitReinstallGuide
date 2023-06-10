@@ -1,0 +1,31 @@
+Most of this tutorial, button.py, and volume control come from Nate Haris. I added radio.py and editted this tutorial to match.
+
+This tutorial starts after you have already followed the tutorial to assemble the Google AIY Voice Kit, found here. All my commands are run as superuser (force of habit). If you do not have root access for some reason, ignore the "sudo" part of each command.
+
+The music button script comes from combining two scripts I found online, one for music playback and another for selecting a random file. The script below waits for a signal from GPIO pin 23 (the default pin when using the Google AIY Voice Kit; see here for pin layout). When it receives a signal, it chooses a random file from a specified directory (in this case, the standard /home/pi/Music folder on a normal Raspbain install). If the file ends in an mp3 extension, it stops the previous song by killing mpg123 and then plays the new file using mpg123. If the extension is anything other than mp3, it kills aplay and plays the new file using aplay. The script then loops forever, waiting for the button to be pushed.
+
+If your musical files are stored anywhere other than /home/pi/Music, you'll need to edit the path in randomfile and file.
+
+This script calls for python, mpg123 and aplay to be installed on your system. Run sudo apt-get install python to get Python. Run sudo apt-get install mpg123 to get mgp123. Aplay should be a part of alsa-utils, which you can get by running sudo apt-get install alsa-utils
+
+Download the script by downloading and then using WinSCP to transfer files onto the Raspberry pi.
+
+The volume script mostly comes from Andrew Dupont, aka savetheclocktower, and his well-written tutorial for using a rotary encoder for volume control (Thanks man). For my volume knob, I used this rotary encoder from Adafruit (a few dollars, comes with a black knob cover and a washer and bolt), which can trasmit turns in both directions, as well as a button push. For my setup, I wired the five pins on the encoder (see a layout here) to specific GPIO inputs on the Voice HAT. I used GPIO 26, GPIO 6 and the black ground on GPIO 26 for the volume twist, and GPIO 13 and the black ground on GPIO 13 for the button (see a pinout of the Voice HAT here. GPIO 26, 6 and 13 are all in the Servo section on the left side of the Voice HAT). If you decide to use different GPIO pins, make sure to change them in your volume-control script.
+
+The script calls for amixer to be installed, which comes from alsa-utils. If you installed aplay from the button script setup, you should be good to go. The script also required python3, which can be downloaded by running sudo apt-get install python3 python3-rpi.gpio
+
+You can download this script by running sudo wget [RAW FILE URL] and placing the file in your /home/pi/bin directory (if you do not have a bin folder yet, make one by running sudo mkdir bin while in your /home/pi directory).
+
+Make sure /home/pi/bin is in your path. You can check by running echo $PATH If you don't see it listed, add it using echo "export PATH=$HOME/bin:$PATH" >> ~/.bashrc Restart your Pi to put it into effect.
+
+Make the file executable by running sudo chmod +x /home/pi/bin/volume-control
+
+In the script, turning the knob up or down with adjust the volume up or down by 5 percent, between 0 (mute) and 90 percent. After 90 percent, the sounds gets really distorted. These values and the GPIO pins are adjustable in the SETTINGS of the script. Since my knob's button is jammed, I set GPIO_BUTTON to None. If you set it to a GPIO pin (such as 13, if you follow my wiring), the button will mute and unmute the audio, according to the script. (Again, thanks Andrew).
+
+To have the two scripts automatically run when the Pi boots, edit your rc.local file. Navigate to /etc/rc.local by typing: sudo nano /etc/rc.local
+
+At the end of the file, after "fi", add python /home/pi/button.py & for the music playback control. Then, on a new line, add sudo /home/pi/bin/volume-control & for the volume control. Make sure to have exit 0 on a new line below the two commands to complete the rc.local file. Press Ctrl-X, and save your changes to the file.
+
+Finally, I make a cutout for my volume knob and put the whole setup into the Google AIY Voice Kit box. Plug the thing in, add some music files to your Music directory, hit the button and rock out.
+
+To play continuously, simply download and run radio.py
