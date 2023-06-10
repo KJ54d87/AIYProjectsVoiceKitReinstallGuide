@@ -1,15 +1,4 @@
 Alright so basic setup is here
 https://aiyprojects.withgoogle.com/voice-v1/
 
-Jukebox button code:
-https://gist.github.com/KJ54d87/36ab6bf7be37c02616ac31f76b359e09
-
-Express.js code:
-https://github.com/HackSC/express-workshop/blob/main/main.js
-
-Remember to install node
-sudo apt install node.js
-Also install npm
-Sudo apt install npm
-
 Ok, so follow the direction in the booklet, AIY projects
