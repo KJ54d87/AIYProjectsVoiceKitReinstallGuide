@@ -1,4 +1,4 @@
-Most of this tutorial, button.py, and volume control come from Nate Haris. I added radio.py and editted this tutorial to match.
+Most of this tutorial, button.py, and volume control come from Nate Haris. I added radio.py and editted this tutorial to match. Original gist is here: https://gist.github.com/KJ54d87/36ab6bf7be37c02616ac31f76b359e09
 
 This tutorial starts after you have already followed the tutorial to assemble the Google AIY Voice Kit, found here. All my commands are run as superuser (force of habit). If you do not have root access for some reason, ignore the "sudo" part of each command.
 
