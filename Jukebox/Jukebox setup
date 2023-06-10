@@ -29,3 +29,4 @@ At the end of the file, after "fi", add python /home/pi/button.py & for the musi
 Finally, I make a cutout for my volume knob and put the whole setup into the Google AIY Voice Kit box. Plug the thing in, add some music files to your Music directory, hit the button and rock out.
 
 To play continuously, simply download and run radio.py
+ 
