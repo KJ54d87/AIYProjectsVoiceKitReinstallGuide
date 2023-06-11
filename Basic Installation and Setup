@@ -1,6 +1,9 @@
 Alright so basic setup is here
 https://aiyprojects.withgoogle.com/voice-v1/
 
+Express.js code:
+https://github.com/HackSC/express-workshop/blob/main/main.js
+
 Remember to run (mostly) everything with python 3! It was a basic mistake but it cost me a day of work.
 
 Ok, so follow the direction in the booklet (Essentials_AIY_Projects_Voice_v1), they are pretty much correct, but a few edits are needed.
